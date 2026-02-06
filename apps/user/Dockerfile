@@ -14,7 +14,7 @@ COPY pnpm-lock.yaml ./
 RUN npm i -g pnpm
 
 # Dependency 설치하기
-RUN pnpm i
+RUN pnpm i --frozen-lockfile
 
 # 나머지 파일 복사
 COPY . .
