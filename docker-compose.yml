@@ -13,6 +13,9 @@ services:
       postgres_user:
         condition: service_healthy
 
+    env_file:
+      - ./apps/user/.env
+
     # '현재 컴퓨터 포트:컨테이너 안 포트'
     ports:
       - '3001:3000'
@@ -21,6 +24,8 @@ services:
       - .:/usr/src/app
       # 연동을 하지 않는다
       - /usr/src/app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true
 
   postgres_user:
     image: postgres:16
